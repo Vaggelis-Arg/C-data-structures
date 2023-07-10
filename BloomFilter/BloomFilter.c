@@ -39,7 +39,7 @@ static inline void bloom_filter_set_bit(BloomFilter bf, unsigned int hash) {
 
 
 // Get the (hash % 8) bit of the (hash / 8) bit array position
-static unsigned int bloom_filter_get_bit(BloomFilter bf, unsigned int hash) {
+static inline unsigned int bloom_filter_get_bit(BloomFilter bf, unsigned int hash) {
     return (((bf->bit_array[hash >> 3] & (1 << (hash & 7)))) != 0);
 }
 
