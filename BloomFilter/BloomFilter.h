@@ -1,3 +1,4 @@
+/* File: BloomFilter.h */
 #ifndef CODE_HASHTABLE_H
 #define CODE_HASHTABLE_H
 
@@ -10,7 +11,7 @@ typedef struct bloom_filter *BloomFilter;
 typedef size_t (*HashFunc)(void *);
 
 //Function to create a bloom filter
-BloomFilter bloom_filter_create(const unsigned int size, const unsigned int hash_count, HashFunc *hash);
+BloomFilter bloom_filter_create(const unsigned int size, const unsigned int hash_count, const HashFunc *hash);
 
 // Function to insert a key into the bloom filter
 void bloom_filter_insert(BloomFilter bf, void *key);

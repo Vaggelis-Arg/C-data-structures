@@ -1,3 +1,4 @@
+/* File: BloomFilter.c */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +17,7 @@ struct bloom_filter{
 
 
 //Function to create a bloom filter
-BloomFilter bloom_filter_create(const unsigned int size, const unsigned int hash_count, HashFunc *hash) {
+BloomFilter bloom_filter_create(const unsigned int size, const unsigned int hash_count, const HashFunc *hash) {
     
     BloomFilter bf = malloc(sizeof(*bf));
     bf->bit_array = calloc((size << 3) | 1, sizeof(unsigned char));
@@ -33,13 +34,13 @@ BloomFilter bloom_filter_create(const unsigned int size, const unsigned int hash
 
 
 // Set 1 the (hash % 8) bit of the (hash / 8) bit array position
-static inline void bloom_filter_set_bit(BloomFilter bf, unsigned int hash) {
+static inline void bloom_filter_set_bit(BloomFilter bf, const unsigned int hash) {
     bf->bit_array[hash >> 3] |= (1 << (hash & 7)); // hash & 7 equals to hash hash % 8 
 }
 
 
 // Get the (hash % 8) bit of the (hash / 8) bit array position
-static inline unsigned int bloom_filter_get_bit(BloomFilter bf, unsigned int hash) {
+static inline unsigned int bloom_filter_get_bit(BloomFilter bf, const unsigned int hash) {
     return (((bf->bit_array[hash >> 3] & (1 << (hash & 7)))) != 0);
 }
 
