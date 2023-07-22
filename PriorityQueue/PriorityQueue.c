@@ -51,20 +51,14 @@ size_t PQ_size(const PriorityQueue PQ) {
 
 
 // Insert an item into the priority queue
-bool PQ_insert(PriorityQueue PQ, void *data) {
-    assert((PQ != NULL) && (data != NULL));
+bool PQ_insert(PriorityQueue PQ, void *new_data) {
+    assert((PQ != NULL) && (new_data != NULL));
 
     PQ->size++;
     if (PQ->size == PQ->capacity) {
         fprintf(stderr, "Priority Queue is full. Given item cannot be inserted.\n");
         return false;
     }
-
-    // Allocate memory for the new element and copy the data into the allocated memory
-    void *new_data = malloc(sizeof(*new_data));
-    assert(new_data != NULL);
-    
-    memcpy(new_data, data, sizeof(*new_data));
 
     // Start from the leaf nodes and go up to find the right position to insert the data
     size_t ChildLoc = PQ->size;
@@ -100,9 +94,6 @@ void *PQ_remove(PriorityQueue PQ) {
         return NULL;
 
     void *ItemToReturn = PQ->array[1], *ItemToPlace = PQ->array[PQ->size];
-    
-    // Free the memory which is allocated from the ItemToReturn
-    free(PQ->array[1]);
 
     PQ->size--;
 
@@ -119,7 +110,7 @@ void *PQ_remove(PriorityQueue PQ) {
             if(PQ->compare(PQ->array[ChildLoc], PQ->array[ChildLoc + 1]) < 0)
                 ChildLoc++;
 
-        if(PQ->compare(PQ->array[ChildLoc], ItemToPlace)) {
+        if(PQ->compare(PQ->array[ChildLoc], ItemToPlace) <= 0) {
             // If the child has a smaller or equal value than ItemToPlace then place ItemToPlace at the
             // current location and return the removed item
             PQ->array[CurrentLoc] = ItemToPlace;
