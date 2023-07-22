@@ -330,6 +330,13 @@ bool RBT_empty(RBTree root) {
     return RBT_count_items(root) == 0;
 }
 
+// Returns the number of items in the red black tree
+size_t RBT_count_items(RBTree root) {
+    if((root == &NIL) || (root == NULL))
+        return 0;
+    return 1 + RBT_count_items(root->left) + RBT_count_items(root->right);
+}
+
 
 // Inorder traversal and print of items in the red black tree
 void RBT_inorder_traversal(RBTree root, PrintFunc print) {
@@ -348,14 +355,6 @@ void RBT_preorder_traversal(RBTree root, PrintFunc print) {
     print(root->data);
     RBT_preorder_traversal(root->left, print);
     RBT_preorder_traversal(root->right, print);
-}
-
-
-// Returns the number of items in the red black tree
-size_t RBT_count_items(RBTree root) {
-    if((root == &NIL) || (root == NULL))
-        return 0;
-    return 1 + RBT_count_items(root->left) + RBT_count_items(root->right);
 }
 
 
