@@ -293,7 +293,7 @@ bool RBT_delete(RBTree *root, void *data, CompareFunc compare, DestroyFunc destr
 }
 
 
-// Search given data in the red black tree and return the data if it finds it, else return NULL
+// Search given data in the red black tree and return true if it finds it, else return false
 bool RBT_search(RBTree root, void *data, CompareFunc compare) {
     assert(compare != NULL);
     if((root == &NIL) || (root == NULL))
