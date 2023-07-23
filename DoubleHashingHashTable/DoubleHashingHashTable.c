@@ -89,7 +89,7 @@ static size_t hashtable_hash(Hashtable *h, void *key) {
 // Hash function : returns the secondary hash value according to the given key
 size_t hashtable_secondary_hash(Hashtable *h, void *key) {
     assert(h != NULL && key != NULL);
-    size_t hash_value = h->capacity - (h->hash_function_2(key) % h->capacity);
+    size_t hash_value = h->hash_function_2(key) % h->capacity;
     return hash_value != 0 ? hash_value : 1;
 }
 
