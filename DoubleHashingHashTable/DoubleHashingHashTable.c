@@ -114,9 +114,11 @@ static Hashtable *hashtable_resize(Hashtable *h) {
     // Update the capacity of the hash table
     if(++primes_index < sizeof(prime_numbers) / sizeof(int))
         h->capacity = prime_numbers[primes_index];
-    else
+    else{
         // If the primes index has exceeded the size of the array which holds the prime numbers, we should find the next prime number manually
+        h->capacity *= 2;
         while(!isprime(++(h->capacity)));
+    }
 
     h->table = calloc(h->capacity , sizeof(*h->table));
     assert(h->table != NULL);
