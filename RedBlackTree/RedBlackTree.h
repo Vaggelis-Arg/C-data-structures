@@ -46,10 +46,10 @@ void RBT_postorder_traversal(RBTree root, PrintFunc print);
 size_t RBT_count_items(RBTree root);
 
 // Find the minimum value of a red black tree
-void *min_value(RBTree root);
+void *RBT_min_value(RBTree root);
 
 // Find the maximum value of a red black tree
-void *max_value(RBTree root);
+void *RBT_max_value(RBTree root);
 
 // Function which is used to destroy a red black tree
 void RBT_destroy(RBTree node, DestroyFunc destroy);

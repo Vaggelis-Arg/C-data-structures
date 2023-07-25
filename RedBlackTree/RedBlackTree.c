@@ -369,22 +369,22 @@ void RBT_postorder_traversal(RBTree root, PrintFunc print) {
 
 
 // Find the minimum value of a red black tree
-void *min_value(RBTree root) {
+void *RBT_min_value(RBTree root) {
     if(root == NULL)
         return NULL;
     if(root->left == &NIL)
         return root->data;
-    return min_value(root->left);
+    return RBT_min_value(root->left);
 }
 
 
 // Find the maximum value of a red black tree
-void *max_value(RBTree root) {
+void *RBT_max_value(RBTree root) {
     if(root == NULL)
         return NULL;
     if(root->right == &NIL)
         return root->data;
-    return max_value(root->right);
+    return RBT_max_value(root->right);
 }
 
 
