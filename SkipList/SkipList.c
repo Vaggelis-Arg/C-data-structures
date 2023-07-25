@@ -4,7 +4,6 @@
 #include <assert.h>
 #include <time.h>
 #include "SkipList.h"
-// PUT AGAIN SRAND TIME NULL
 
 
 struct skiplist_node {
@@ -41,7 +40,7 @@ static inline link create_node(void *value, void *key, int level) {
 
 // Function to initialize the skip list
 skiplist *skiplist_initialize(CompareFunc compare, PrintFunc print, DestroyFunc destroy_key, DestroyFunc destroy_value) {
-    // srand(time(NULL));
+    srand(time(NULL));
     skiplist *list = malloc(sizeof(*list));
     assert(list != NULL);
     list->header = create_node(NULL, NULL, SKIPLIST_MAX_LEVEL);
