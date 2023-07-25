@@ -115,7 +115,8 @@ void stack_print(Stack stack) {
     printf("Stack is: [");
     while (top != NULL) {
         stack->print(top->data);
-        printf(" ");
+        if(top->next != NULL)
+            printf(", ");
         top = top->next;
     }
     printf("]\n");
