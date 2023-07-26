@@ -1,4 +1,4 @@
-/* File: ChainingHashTable.c */
+/* File: ChainingSCHashTable.c */
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -13,7 +13,8 @@ static int prime_numbers[] = {53, 97, 193, 389, 769, 1543, 3079, 6151, 12289, 24
 	786433, 1572869, 3145739, 6291469, 12582917, 25165843, 50331653, 100663319, 201326611, 402653189, 805306457, 1610612741};
 
 
-struct hashtable {
+/* Separate chaining hash table */
+struct SChashtable {
     size_t size;
     size_t table_capacity;
     List *table;
@@ -25,9 +26,9 @@ struct hashtable {
 };
 
 
-// Create a new hashtable
-Hashtable* hashtable_create(CompareFunc compare, PrintFunc print, DestroyFunc destroy_key, DestroyFunc destroy_value, HashFunc hash) {
-    Hashtable *h = malloc(sizeof(Hashtable));
+// Create a new SChashtable
+SCHashtable* SChashtable_create(CompareFunc compare, PrintFunc print, DestroyFunc destroy_key, DestroyFunc destroy_value, HashFunc hash) {
+    SCHashtable *h = malloc(sizeof(SCHashtable));
     assert(h != NULL);
     h->table_capacity = prime_numbers[0];
     h->size = 0;
@@ -43,7 +44,7 @@ Hashtable* hashtable_create(CompareFunc compare, PrintFunc print, DestroyFunc de
 
 
 // Function which returns the size of the hash table (how many items does it currently store) or -1 if given hash table does not exist
-size_t hashtable_size(Hashtable *h) {
+size_t SChashtable_size(SCHashtable *h) {
     if(h == NULL){
         fprintf(stderr, "Given hash table does not exist\n");
         return -1;
@@ -53,7 +54,7 @@ size_t hashtable_size(Hashtable *h) {
 
 
 // Hash function : returns the hash value according to the given key 
-static inline size_t hashtable_hash(Hashtable *h, void *key) {
+static inline size_t SChashtable_hash(SCHashtable *h, void *key) {
     return h->hash_function(key) % h->table_capacity;
 }
 
@@ -70,13 +71,13 @@ static bool isprime(size_t n) {
 }
 
 
-// Resize the hashtable
-static Hashtable* hashtable_resize(Hashtable* h) {
+// Resize the SChashtable
+static SCHashtable* SChashtable_resize(SCHashtable* h) {
     // Save the old table and capacity of the array of the hash table
     List* old_table = h->table;
     size_t old_capacity = h->table_capacity;
 
-    // Find the new capacity for the hashtable
+    // Find the new capacity for the SChashtable
     size_t new_capacity = 0;
     int primes = sizeof(prime_numbers) / sizeof(int);
     for (int i = 0; i < primes ; i++)
@@ -100,13 +101,13 @@ static Hashtable* hashtable_resize(Hashtable* h) {
         while(list != NULL) {
             void *key = listnode_get_key(list);
             void *value = listnode_get_value(list);
-            new_table[hashtable_hash(h, key)] = list_prepend(new_table[hashtable_hash(h, key)], key, value);
+            new_table[SChashtable_hash(h, key)] = list_prepend(new_table[SChashtable_hash(h, key)], key, value);
             list = list_get_next(list);
         }
         list_free(old_table[i], NULL, NULL);
     }
 
-    // Free the old table and update the hashtable
+    // Free the old table and update the SChashtable
     free(old_table);
     h->table = new_table;
 
@@ -115,16 +116,16 @@ static Hashtable* hashtable_resize(Hashtable* h) {
 
 
 // Get the current load factor of the hash table
-static inline float hashtable_get_load_factor(Hashtable* h) {
+static inline float SChashtable_get_load_factor(SCHashtable* h) {
     return ((float) h->size) / ((float) (h->table_capacity));
 }
 
 
 // Function to insert an item with given key and value into the hash table
-Hashtable *hashtable_insert(Hashtable *h, void *key, void *value) {
-    size_t index = hashtable_hash(h, key);
+SCHashtable *SChashtable_insert(SCHashtable *h, void *key, void *value) {
+    size_t index = SChashtable_hash(h, key);
     
-    // Delete item with the same key if it exists in the hashtable
+    // Delete item with the same key if it exists in the SChashtable
     // Current implementation is an ADTMap, so we do not want to
     // have duplicates
     h->table[index] = list_delete(h->table[index], key, h->compare, h->destroy_key, h->destroy_value);
@@ -135,28 +136,28 @@ Hashtable *hashtable_insert(Hashtable *h, void *key, void *value) {
     // only O(1) complexity
     h->table[index] = list_prepend(h->table[index], key, value);
 
-    if(hashtable_get_load_factor(h) > MAX_LOAD_FACTOR)
-        return hashtable_resize(h);
+    if(SChashtable_get_load_factor(h) > MAX_LOAD_FACTOR)
+        return SChashtable_resize(h);
     return h;
 }
 
 
-// Searches an item in the hashtable according to a specific key
-void *hashtable_search(Hashtable *h, void *key) {
+// Searches an item in the SChashtable according to a specific key
+void *SChashtable_search(SCHashtable *h, void *key) {
     if(h == NULL)
         return NULL;
-    return list_search(h->table[hashtable_hash(h, key)], key, h->compare);
+    return list_search(h->table[SChashtable_hash(h, key)], key, h->compare);
 }
 
 
 // Delete an item from the hash table
-void hashtable_remove(Hashtable *h, void *key) {
-    h->table[hashtable_hash(h, key)] = list_delete(h->table[hashtable_hash(h, key)], key, h->compare, h->destroy_key, h->destroy_value);
+void SChashtable_remove(SCHashtable *h, void *key) {
+    h->table[SChashtable_hash(h, key)] = list_delete(h->table[SChashtable_hash(h, key)], key, h->compare, h->destroy_key, h->destroy_value);
 }
 
 
-// De-allocate a hashtable
-void hashtable_destroy(Hashtable *h) {
+// De-allocate a SChashtable
+void SChashtable_destroy(SCHashtable *h) {
     for(size_t i = 0 ; i < h->table_capacity ; i++)
         list_free(h->table[i], h->destroy_key, h->destroy_value);
     free(h->table);
@@ -164,9 +165,9 @@ void hashtable_destroy(Hashtable *h) {
 }
 
 
-// Print the hashtable
-void hashtable_print(Hashtable *h) {
-    printf("\nHashtable format:\n");
+// Print the SChashtable
+void SChashtable_print(SCHashtable *h) {
+    printf("\nSCHashtable format:\n");
     for(int i = 0 ; i < h->table_capacity ; i++) {
         printf("%d: ", i);
         list_print(h->table[i], h->print);
@@ -175,7 +176,7 @@ void hashtable_print(Hashtable *h) {
 
 
 // Get the number of empty buckets
-size_t hashtable_get_num_empty(Hashtable* h) {
+size_t SChashtable_get_num_empty(SCHashtable* h) {
     size_t empty = 0;
     for (int i = 0 ; i < h->table_capacity ; i++) {
         if (h->table[i] == NULL)
@@ -186,7 +187,7 @@ size_t hashtable_get_num_empty(Hashtable* h) {
 
 
 // Get the maximum list size
-size_t hashtable_get_max_chain_size(Hashtable* h) {
+size_t SChashtable_get_max_chain_size(SCHashtable* h) {
     size_t max = 0;
     for (int i = 0 ; i < h->size ; i++) {
         size_t size = list_size(h->table[i]);
