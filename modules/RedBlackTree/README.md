@@ -37,3 +37,7 @@ The [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) is a 
 | `RBT_min_value`              | O(log n)          |
 | `RBT_max_value`              | O(log n)          |
 | `RBT_destroy`                | O(n)              |
+
+
+### Readings
+To understand better the code for Red-Black Tree you can check out the following paper: http://staff.ustc.edu.cn/~csli/graduate/algorithms/book6/chap14.htm
