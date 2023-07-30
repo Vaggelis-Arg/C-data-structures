@@ -21,7 +21,7 @@ The [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) is a 
 
 ### Time complexity of the implemented functions
 
-<img align="right" width=400 alt="Red-Black Tree picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Red-black_tree_example_with_NIL.svg/316px-Red-black_tree_example_with_NIL.svg.png">
+<img align="right" width=480 alt="Red-Black Tree picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Red-black_tree_example_with_NIL.svg/316px-Red-black_tree_example_with_NIL.svg.png">
 
 | Function                     | Time Complexity   |
 |------------------------------|-------------------|
