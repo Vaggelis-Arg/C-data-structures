@@ -9,22 +9,9 @@ The [Priority Queue](https://en.wikipedia.org/wiki/Priority_queue) with [Heap](h
 - Customizable Comparator: Tailor the Priority Queue to your specific data requirements by providing a custom comparator function.
 - Generic and Flexible: The Priority Queue accepts elements of any data type, thanks to the use of void pointers, making it highly adaptable to various scenarios.
 
-
-## Useful matrix
+### Time complexity of the implemented functions
 
 <img align="right" width=400 alt="Priority Queue picture" src="https://users.cecs.anu.edu.au/~Alistair.Rendell/Teaching/apac_comp3600/module2/images/Heaps_HeapStructure.png">
-
-In the Priority Queue implemented with the heap the following are valid:
-| To Find                 | Use:       | Provided:      |
-|------------------------|------------|----------------|
-| The left child of 𝐴[𝑖]  | 𝐴[2𝑖]      | 2𝑖 ≤ 𝑛          |
-| The right child of 𝐴[𝑖] | 𝐴[2𝑖 + 1] | 2𝑖 + 1 ≤ 𝑛      |
-| The parent of 𝐴[𝑖]      | 𝐴[𝑖/2]     | 𝑖 > 1           |
-| The root                | 𝐴[1]       | A is nonempty   |
-| Whether 𝐴[𝑖] is a leaf  | True       | 2𝑖 > n          |
-
-
-## Time complexity of the implemented functions
 
 | Function                | Time Complexity |
 |-------------------------|-----------------|
@@ -35,3 +22,15 @@ In the Priority Queue implemented with the heap the following are valid:
 | PQ_remove               | O(log n)        |
 | PQ_print                | O(n)            |
 | PQ_destroy              | O(n)            |
+
+
+## Useful matrix
+
+In the Priority Queue implemented with the heap the following are valid:
+| To Find                 | Use:       | Provided:      |
+|------------------------|------------|----------------|
+| The left child of 𝐴[𝑖]  | 𝐴[2𝑖]      | 2𝑖 ≤ 𝑛          |
+| The right child of 𝐴[𝑖] | 𝐴[2𝑖 + 1] | 2𝑖 + 1 ≤ 𝑛      |
+| The parent of 𝐴[𝑖]      | 𝐴[𝑖/2]     | 𝑖 > 1           |
+| The root                | 𝐴[1]       | A is nonempty   |
+| Whether 𝐴[𝑖] is a leaf  | True       | 2𝑖 > n          |
