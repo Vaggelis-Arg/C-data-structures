@@ -24,7 +24,7 @@ In the Priority Queue implemented with the heap the following are valid:
 | Whether 𝐴[𝑖] is a leaf  | True       | 2𝑖 > n          |
 
 
-### Time complexity of the implemented functions
+## Time complexity of the implemented functions
 
 | Function                | Time Complexity |
 |-------------------------|-----------------|
