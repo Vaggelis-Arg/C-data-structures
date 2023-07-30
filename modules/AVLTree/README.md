@@ -26,7 +26,7 @@ $$∣height(left-subtree) − height(right-subtree)∣ ≤ 1$$
 | AVLTree_postorder_traversal| O(n)                    | O(log n) (recursive)    |
 | AVLTree_select_k_th_item   | O(log n)                | O(log n) (recursive)    |
 | AVLTree_empty              | O(1)                    | O(1)                    |
-| AVL_count_items            | O(n)                    | O(1)                    |
+| AVL_count_items            | O(n)                    | O(logn) (recursive)     |
 | AVLTree_min_value          | O(log n)                | O(log n) (recursive)    |
 | AVLTree_max_value          | O(log n)                | O(log n) (recursive)    |
 | AVLTree_destroy            | O(n)                    | O(log n) (recursive)    |
