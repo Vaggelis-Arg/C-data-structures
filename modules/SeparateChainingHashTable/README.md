@@ -12,7 +12,7 @@ The [Separate Chaining](https://en.wikipedia.org/wiki/Coalesced_hashing) [Hash T
 
 ### Time complexity of the implemented functions
 
-<img align="right" width=400 alt="Chaining Hash Table picture" src="https://www.researchgate.net/publication/283760058/figure/fig2/AS:318584157949953@1452967790509/Example-of-Separate-Chaining-Method.png">
+<img align="right" width=320 alt="Chaining Hash Table picture" src="https://www.researchgate.net/publication/283760058/figure/fig2/AS:318584157949953@1452967790509/Example-of-Separate-Chaining-Method.png">
 
 | Function                      | Time Complexity (Average Case) | Time Complexity (Worst Case) |
 | ----------------------------- | ------------------------------ | ---------------------------- |
