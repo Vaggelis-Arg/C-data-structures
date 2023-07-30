@@ -11,7 +11,7 @@
 
 ### Time complexity of the implemented functions
 
-<img align="right" width=480 alt="Skip List picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Skip_list.svg/800px-Skip_list.svg.png">
+<img align="right" width=550 alt="Skip List picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Skip_list.svg/800px-Skip_list.svg.png">
 
 | Function                       | Time Complexity   |
 |--------------------------------|-------------------|
