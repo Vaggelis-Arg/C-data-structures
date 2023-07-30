@@ -14,19 +14,19 @@ $$∣height(left-subtree) − height(right-subtree)∣ ≤ 1$$
 
 <img align="right" width=380 alt="AVL Tree picture" src="https://en.wikipedia.org/wiki/File:AVL-tree-wBalance_K.svg">
 
-### Complexity of the implemented functions
+### Time complexity of the implemented functions
 
-| Function                   | Time Complexity          | Space Complexity        |
-|----------------------------|--------------------------|-------------------------|
-| AVLTree_insert             | O(log n)                | O(log n) (recursive)    |
-| AVLTree_delete             | O(log n)                | O(log n) (recursive)    |
-| AVLTree_search             | O(log n)                | O(log n) (recursive)    |
-| AVLTree_inorder_traversal  | O(n)                    | O(log n) (recursive)    |
-| AVLTree_preorder_traversal | O(n)                    | O(log n) (recursive)    |
-| AVLTree_postorder_traversal| O(n)                    | O(log n) (recursive)    |
-| AVLTree_select_k_th_item   | O(log n)                | O(log n) (recursive)    |
-| AVLTree_empty              | O(1)                    | O(1)                    |
-| AVL_count_items            | O(n)                    | O(logn) (recursive)     |
-| AVLTree_min_value          | O(log n)                | O(log n) (recursive)    |
-| AVLTree_max_value          | O(log n)                | O(log n) (recursive)    |
-| AVLTree_destroy            | O(n)                    | O(log n) (recursive)    |
+| Function                   | Time Complexity |
+|----------------------------|-----------------|
+| AVLTree_insert             | O(log n)        |
+| AVLTree_delete             | O(log n)        |
+| AVLTree_search             | O(log n)        |
+| AVLTree_inorder_traversal  | O(n)            |
+| AVLTree_preorder_traversal | O(n)            |
+| AVLTree_postorder_traversal| O(n)            |
+| AVLTree_select_k_th_item   | O(log n)        |
+| AVLTree_empty              | O(1)            |
+| AVL_count_items            | O(n)            |
+| AVLTree_min_value          | O(log n)        |
+| AVLTree_max_value          | O(log n)        |
+| AVLTree_destroy            | O(n)            |
