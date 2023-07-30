@@ -14,8 +14,19 @@ $$∣height(left-subtree) − height(right-subtree)∣ ≤ 1$$
 
 <img align="right" width=380 alt="AVL Tree picture" src="https://en.wikipedia.org/wiki/File:AVL-tree-wBalance_K.svg">
 
-| Function                   | Time Complexity | Space Complexity |
-|----------------------------|-----------------|------------------|
-| AVLTree_insert             | O(log n)        | O(log n)         |
-| AVLTree_delete             | O(log n)        | O(log n)         |
-| AVLTree_search             | O(log n)        | O(log n)         |
+### Complexity of the implemented functions
+
+| Function                   | Time Complexity          | Space Complexity        |
+|----------------------------|--------------------------|-------------------------|
+| AVLTree_insert             | O(log n)                | O(log n) (recursive)    |
+| AVLTree_delete             | O(log n)                | O(log n) (recursive)    |
+| AVLTree_search             | O(log n)                | O(log n) (recursive)    |
+| AVLTree_inorder_traversal  | O(n)                    | O(log n) (recursive)    |
+| AVLTree_preorder_traversal | O(n)                    | O(log n) (recursive)    |
+| AVLTree_postorder_traversal| O(n)                    | O(log n) (recursive)    |
+| AVLTree_select_k_th_item   | O(log n)                | O(log n) (recursive)    |
+| AVLTree_empty              | O(1)                    | O(1)                    |
+| AVL_count_items            | O(n)                    | O(1)                    |
+| AVLTree_min_value          | O(log n)                | O(log n) (recursive)    |
+| AVLTree_max_value          | O(log n)                | O(log n) (recursive)    |
+| AVLTree_destroy            | O(n)                    | O(log n) (recursive)    |
