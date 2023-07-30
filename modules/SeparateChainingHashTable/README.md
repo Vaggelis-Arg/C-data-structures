@@ -5,7 +5,7 @@ The [Separate Chaining](https://en.wikipedia.org/wiki/Coalesced_hashing) [Hash T
 
 ## Features
 
-<img align="right" width=320 alt="Chaining Hash Table picture" src="https://www.researchgate.net/publication/283760058/figure/fig2/AS:318584157949953@1452967790509/Example-of-Separate-Chaining-Method.png">
+<img align="right" width=320 alt="Chaining Hash Table picture" src="https://www.eecs.umich.edu/courses/eecs380/ALG/niemann/s_fig31.gif">
 
 - Efficient key-value storage and retrieval.
 - Handles hash collisions using separate chaining with linked lists.
