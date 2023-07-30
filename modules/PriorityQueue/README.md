@@ -12,6 +12,8 @@ The [Priority Queue](https://en.wikipedia.org/wiki/Priority_queue) with [Heap](h
 
 ## Useful matrix
 
+<img align="right" width=400 alt="Priority Queue picture" src="https://users.cecs.anu.edu.au/~Alistair.Rendell/Teaching/apac_comp3600/module2/images/Heaps_HeapStructure.png">
+
 In the Priority Queue implemented with the heap the following are valid:
 | To Find                 | Use:       | Provided:      |
 |------------------------|------------|----------------|
@@ -23,8 +25,6 @@ In the Priority Queue implemented with the heap the following are valid:
 
 
 ### Time complexity of the implemented functions
-
-<img align="right" width=400 alt="Priority Queue picture" src="https://users.cecs.anu.edu.au/~Alistair.Rendell/Teaching/apac_comp3600/module2/images/Heaps_HeapStructure.png">
 
 | Function                | Time Complexity |
 |-------------------------|-----------------|
