@@ -12,7 +12,7 @@ $$∣height(left-subtree) − height(right-subtree)∣ ≤ 1$$
 - Generic implementation: The tree is implemented using void pointers and macros, making it adaptable to different data types.
 - Efficient operations: Most operations, such as search, insertion, and deletion, have an average time complexity of O(log n).
 
-<img align="right" width=380 alt="AVL Tree picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/AVL-tree-wBalance_K.svg/262px-AVL-tree-wBalance_K.svg.png">
+<img align="right" width=420 alt="AVL Tree picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/AVL-tree-wBalance_K.svg/262px-AVL-tree-wBalance_K.svg.png">
 
 ### Time complexity of the implemented functions
 
