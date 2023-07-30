@@ -12,7 +12,7 @@ The [Bloom Filter](https://en.wikipedia.org/wiki/Bloom_filter) is a probabilisti
 
 ### Time complexity of the implemented functions
 
-<img align="right" width=320 alt="bloom filter picture" src="https://cdnd.selectdb.com/assets/images/Bloom_filter.svg-9ad88beea5ebb916ea2d0ac27eb5a5cf.png">
+<img align="right" width=420 alt="bloom filter picture" src="https://cdnd.selectdb.com/assets/images/Bloom_filter.svg-9ad88beea5ebb916ea2d0ac27eb5a5cf.png">
 
 | Function                 | Time Complexity |
 |--------------------------|-----------------|
