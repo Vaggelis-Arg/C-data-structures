@@ -11,7 +11,7 @@ The [Double Hashing](https://en.wikipedia.org/wiki/Double_hashing) [Hash Table](
 
 ### Time complexity of the implemented functions
 
-<img align="right" width=400 alt="Double Hashing Hash Table picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg/1200px-Hash_table_3_1_1_0_1_0_0_SP.svg.png">
+<img align="right" width=320 alt="Double Hashing Hash Table picture" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg/1200px-Hash_table_3_1_1_0_1_0_0_SP.svg.png">
 
 | Function                | Average Case Time Complexity | Worst Case Time Complexity |
 |-------------------------|------------------------------|----------------------------|
