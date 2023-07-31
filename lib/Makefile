@@ -22,7 +22,7 @@ OBJ = $(DS)/Stack/Stack.o \
 
 
 # Library name and output
-LIB_NAME = libcdatastructures.a
+LIB_NAME = LibDataStructures.a
 
 all: $(LIB_NAME)
 
