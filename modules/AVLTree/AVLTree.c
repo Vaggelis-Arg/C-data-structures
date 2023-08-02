@@ -66,73 +66,76 @@ AVLTree AVLTree_insert(AVLTree node, void *data, CompareFunc compare) {
     return node;
 }
 
-
-// Remove given item (if it exists) from the AVL tree and return a boolean value which demonstrates if the deletion occurred
-AVLTree AVLTree_delete(AVLTree avl, void *data, CompareFunc compare, DestroyFunc destroy) {
-    if(avl == NULL)
+// Helper function to find the node with the maximum value in an AVL tree
+static AVLTree AVLTree_max_node(AVLTree avl) {
+    if (avl == NULL)
         return NULL;
-    if(compare(data, avl->data) < 0)
-        // The data to be deleted is smaller than the
-        // current node's data, so it should be in left subtree
+
+    while (avl->right != NULL)
+        avl = avl->right;
+
+    return avl;
+}
+
+AVLTree AVLTree_delete(AVLTree avl, void *data, CompareFunc compare, DestroyFunc destroy) {
+    if (avl == NULL)
+        return NULL;
+
+    if (compare(data, avl->data) < 0)
         avl->left = AVLTree_delete(avl->left, data, compare, destroy);
-    else if(compare(data, avl->data) > 0)
-        // The data to be deleted is greater than the
-        // current node's data, so it should in right subtree
+    else if (compare(data, avl->data) > 0)
         avl->right = AVLTree_delete(avl->right, data, compare, destroy);
     else {
-        // Data is the same as current node's data. Found
-        // the node we should delete 
-        if((avl->left == NULL) || (avl->right == NULL)) {
-            // node with at most one child
+        if ((avl->left == NULL) || (avl->right == NULL)) {
             AVLTree temp = avl->left ? avl->left : avl->right;
 
-            if(temp == NULL) {
+            if (temp == NULL) {
                 // No child case
                 if (destroy)
-                    destroy(avl->data); // Free the memory of the data
-                temp = avl;
+                    destroy(avl->data);
+                free(avl);
                 avl = NULL;
-            }
-            else {
+            } else {
                 // One child case
                 if (destroy)
-                    destroy(avl->data); // Free the memory of the data
+                    destroy(avl->data);
                 *avl = *temp;
+                free(temp);
             }
-            free(temp);
-        }
-        else {
+        } else {
             // node with two children: Get the inorder predecessor (the maximum value in the left subtree)
-            AVLTree temp = AVLTree_max_value(avl->left);
-            
-            if (destroy)
-                destroy(avl->data);  // Free the memory of the data
+            AVLTree tempNode = AVLTree_max_node(avl->left);
 
-            avl->data = temp->data;
+            // Swap the data between avl and tempNode
+            void *tempData = avl->data;
+            avl->data = tempNode->data;
+            tempNode->data = tempData;
 
-            avl->left = AVLTree_delete(avl->left, temp->data, compare, destroy);
+            avl->left = AVLTree_delete(avl->left, data, compare, destroy);
         }
     }
 
-    if(avl == NULL)
+    if (avl == NULL)
         return NULL;
+
     // Update node's height
     avl->height = 1 + MAX(avl_height(avl->right), avl_height(avl->left));
+
     // Get balance of the node (it is valid that |Balance| <= 1)
     int balance = avl_balance(avl);
-    // Fix the balance of the avl tree by rotating the nodes that have wrong balance
-    if(balance > 1 && avl_balance(avl->left) >= 0)
+
+    // Fix the balance of the AVL tree by rotating the nodes that have wrong balance
+    if (balance > 1 && avl_balance(avl->left) >= 0)
         // Left-Left case
         return avl_right_rotate(avl);
-    else if(balance > 1 && avl_balance(avl->left) < 0) {
+    else if (balance > 1 && avl_balance(avl->left) < 0) {
         // Left-Right case
         avl->left = avl_left_rotate(avl->left);
         return avl_right_rotate(avl);
-    }
-    else if(balance < -1 && avl_balance(avl->right) <= 0)
+    } else if (balance < -1 && avl_balance(avl->right) <= 0)
         // Right-Right Case
         return avl_left_rotate(avl);
-    else if(balance < -1 && avl_balance(avl->right) > 0) {
+    else if (balance < -1 && avl_balance(avl->right) > 0) {
         // Right-Left Case
         avl->right = avl_right_rotate(avl->right);
         return avl_left_rotate(avl);

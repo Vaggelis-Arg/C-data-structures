@@ -26,4 +26,4 @@ void bloom_filter_reset(BloomFilter bf);
 void bloom_filter_destroy(BloomFilter bf);
 
 
-#endif //CODE_HASHTABLE_H
+#endif
