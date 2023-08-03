@@ -141,9 +141,10 @@ void PQ_print(const PriorityQueue PQ) {
 
 // Destroy priority queue
 void PQ_destroy(PriorityQueue PQ) {
-    assert((PQ != NULL) && (PQ->destroy != NULL));
+    assert(PQ != NULL);
     for(int i = 1 ; i <= PQ->size ; i++)
-        PQ->destroy(PQ->array[i]);
+        if(PQ->destroy)
+            PQ->destroy(PQ->array[i]);
     free(PQ->array);
     free(PQ);
 }

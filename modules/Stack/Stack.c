@@ -78,7 +78,10 @@ unsigned int stack_size(Stack stack) {
 
 // Return top item of stack
 void *stack_top(Stack stack) {
-    return stack->top->data;
+    assert(stack != NULL);
+    if(stack->top != NULL)
+        return stack->top->data;
+    return NULL;
 }
 
 

@@ -70,15 +70,19 @@ List list_delete(List list, void *key, CompareFunc compare, DestroyFunc destroy_
         if(!compare(cur->key, key)) {
             if(prev == NULL) {
                 List next = cur->next;
-                destroy_key(cur->key);
-                destroy_value(cur->value);
+                if(destroy_key)
+                    destroy_key(cur->key);
+                if(destroy_value)
+                    destroy_value(cur->value);
                 free(cur);
                 return next;
             }
             else {
                 prev->next = cur->next;
-                destroy_key(cur->key);
-                destroy_value(cur->value);
+                if(destroy_key)
+                    destroy_key(cur->key);
+                if(destroy_value)
+                    destroy_value(cur->value);
                 free(cur);
                 return list;
             }

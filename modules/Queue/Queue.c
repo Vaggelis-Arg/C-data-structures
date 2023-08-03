@@ -115,7 +115,8 @@ void Queue_destroy(Queue Q) {
     while(Q->head != NULL) {
         queue_node *temp = Q->head;
         Q->head = Q->head->next;
-        Q->destroy(temp->data);
+        if(Q->destroy)
+            Q->destroy(temp->data);
         free(temp);
     }
     free(Q);

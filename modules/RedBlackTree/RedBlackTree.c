@@ -241,7 +241,7 @@ static void RBT_delete_fixup(RBTNode **root, RBTNode **node) {
 
 // Remove node with given data from the red black tree
 bool RBT_delete(RBTree *root, void *data, CompareFunc compare, DestroyFunc destroy) {
-    assert((compare != NULL) && (destroy != NULL));
+    assert(compare != NULL);
     RBTNode *old_node, *next_node, *node = *root;
     while(node != &NIL) {
         if(compare(data, node->data) == 0) {
@@ -253,7 +253,8 @@ bool RBT_delete(RBTree *root, void *data, CompareFunc compare, DestroyFunc destr
                 // Otherwise we find it's successor which is going to be the one we will delete (successor is a leaf node)
                 old_node = find_successor(node);
                 // in case that the node has two children we should replace the old data with the successor's data because we do not want them to get lost
-                destroy(node->data);
+                if(destroy)
+                    destroy(node->data);
                 node->data = old_node->data;
             }
             
@@ -438,7 +439,8 @@ void RBT_destroy(RBTree node, DestroyFunc destroy) {
     if(node != &NIL) {
         RBT_destroy(node->left, destroy);
         RBT_destroy(node->right, destroy);
-        destroy(node->data);
+        if(destroy)
+            destroy(node->data);
         free(node);
     }
 }

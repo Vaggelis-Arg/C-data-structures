@@ -5,6 +5,7 @@
 #include <time.h>
 #include "SkipList.h"
 
+typedef struct skiplist_node *link;
 
 struct skiplist_node {
     void *key;
@@ -195,6 +196,7 @@ skiplist *skiplist_merge(skiplist *list1, skiplist *list2) {
     link *update = calloc(SKIPLIST_MAX_LEVEL + 1, sizeof(link));
     int unflipped = 1;
     skiplist *list = skiplist_initialize(list1->compare, list1->print, list1->destroy_key, list1->destroy_value);
+    list->size = list1->size + list2->size;
     list->level = (list1->level > list2->level) ? list1->level : list2->level;
     for (int i = 0; i <= list->level; i++)
         update[i] = list->header;
@@ -232,8 +234,9 @@ skiplist *skiplist_merge(skiplist *list1, skiplist *list2) {
             list1->header->forward[i] = x->forward[i];
         }
         // x = last element moved to output list
-        // if the element at the front of list2 is a duplicate of an element already moved to output list, eliminate it
         if (list1->compare(x->key, key2) == 0) {
+            // if the element at the front of list2 is a duplicate of an element already moved to output list, eliminate it
+            list->size--;
             if (unflipped) {
                 list1->destroy_value(x->value);
                 x->value = list2->header->forward[0]->value;

@@ -5,8 +5,6 @@
 
 #define SKIPLIST_MAX_LEVEL 6
 
-typedef struct skiplist_node *link;
-
 typedef struct skiplist skiplist;
 
 
@@ -25,9 +23,6 @@ skiplist *skiplist_initialize(CompareFunc compare, PrintFunc print, DestroyFunc 
 
 // Returns the size ofthe list
 size_t skiplist_get_size(skiplist *list);
-
-// Returns the value of a link node of the skip list
-void *link_get_value(link x);
 
 // Function to insert a key and the corresponding value in the skiplist
 void skiplist_insert(skiplist *list, void *key, void *value);
