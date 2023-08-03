@@ -1,3 +1,4 @@
+/* File: DoubleHashingHashTable.h */
 #ifndef DHHASHTABLE_H
 #define DHHASHTABLE_H
 

@@ -48,7 +48,6 @@ struct DHhashtable {
 
 
 DHHashtable *DHhashtable_create(CompareFunc compare, DestroyFunc destroy_key, DestroyFunc destroy_value, PrintFunc print, HashFunc hash, HashFunc hash2) {
-    assert(compare != NULL && destroy_key != NULL && destroy_value != NULL && print != NULL && hash != NULL && hash2 != NULL);
     DHHashtable *h = malloc(sizeof(*h));
     assert(h != NULL);
 
@@ -177,13 +176,9 @@ DHHashtable *DHhashtable_insert(DHHashtable *h, void *key, void *value) {
 
     // If there does already exist an item with the same key into the hash table, just update it's value
     if(already_in_hashtable){
-        if(node->value != value && h->destroy_value != NULL){
+        if(h->destroy_value)
             h->destroy_value(node->value);
-            node->value = value;
-        }
-        else {
-            h->destroy_value(value);
-        }
+        node->value = value;
         return h;
     }
     
