@@ -12,7 +12,7 @@ A [double linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) is a da
 
 ### Time complexity of the implemented functions
 
-<img align="right" width=400 alt="Priority Queue picture" src="https://i.stack.imgur.com/UIhLj.png">
+<img align="right" width=500 alt="Priority Queue picture" src="https://i.stack.imgur.com/UIhLj.png">
 
 | Function             | Time Complexity      |
 |----------------------|----------------------|
