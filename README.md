@@ -17,6 +17,7 @@ The following data structures have been implemented in this project:
 - AVL tree
 - Bloom Filter
 - Double Hashing Hash Table
+- Double Linked List
 - Priority Queue
 - Queue
 - Red Black Tree
