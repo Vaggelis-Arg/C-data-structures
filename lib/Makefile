@@ -1,4 +1,3 @@
-
 # path to the modules directory
 DS = ../modules
 
@@ -14,6 +13,7 @@ OBJ = $(DS)/Stack/Stack.o \
 	  $(DS)/PriorityQueue/PriorityQueue.o \
 	  $(DS)/RedBlackTree/RedBlackTree.o \
 	  $(DS)/DoubleHashingHashTable/DoubleHashingHashTable.o \
+	  $(DS)/DoubleLinkedList/DoubleLinkedList.o \
 	  $(DS)/SeparateChainingHashTable/LinkedLists/list.o \
 	  $(DS)/SeparateChainingHashTable/ChainingHashTable.o \
 	  $(DS)/BloomFilter/BloomFilter.o \
