@@ -6,7 +6,6 @@ Welcome to C-data-structures! This is a collection of various data structures im
 - [Introduction](#introduction)
 - [Data Structures](#data-structures)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
@@ -38,11 +37,6 @@ To use any of the data structures in your C projects, follow these general steps
 5. Use the provided API functions to interact with the data structure in your program.
 
 For more detailed instructions and examples, refer to the individual README files for each data structure.
-
-## Contributing
-Contributions to this project are welcome! If you have any bug fixes, improvements, or additional data structures that you would like to add, feel free to submit a pull request. Please ensure that your changes are well-documented and thoroughly tested.
-
-If you encounter any issues or have suggestions for new features, you can also open an issue on GitHub.
 
 ## License
 This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the code for both personal and commercial purposes. However, it comes with no warranties or guarantees of any kind. Use it at your own risk.
