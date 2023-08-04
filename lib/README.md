@@ -24,7 +24,7 @@ To use the library in your C projects, follow these steps:
 2. Include the required header files in your C source files to access the data structures you want to use. For example, to use the Stack module, include the following line at the top of your C source file:
 
 ```bash
-~#include "<path_to_your_project_folder>/Stack/Stack.h" (Replace <path_to_your_project_folder> with the actual path to your project folder.)
+#include "<path_to_your_project_folder>/Stack/Stack.h" (Replace <path_to_your_project_folder> with the actual path to your project folder.)
 ```
 
 ##
