@@ -10,10 +10,6 @@ int *create_int(int value) {
     return ptr;
 }
 
-// void print_int(void *value) {
-//     printf(" %d ", *(int *)value);
-// }
-
 
 /* Helper function to compare integers */
 int compare_ints(void *a, void *b) {
@@ -28,10 +24,18 @@ void test_avl_tree_insert_and_search() {
     AVLTree_insert(avl, create_int(3), compare_ints);
     AVLTree_insert(avl, create_int(7), compare_ints);
 
-    TEST_CHECK(AVLTree_search(avl, create_int(5), compare_ints));
-    TEST_CHECK(AVLTree_search(avl, create_int(3), compare_ints));
-    TEST_CHECK(AVLTree_search(avl, create_int(7), compare_ints));
-    TEST_CHECK(!AVLTree_search(avl, create_int(2), compare_ints));
+    int *search_item = create_int(5);
+    TEST_CHECK(AVLTree_search(avl, search_item, compare_ints));
+    free(search_item);
+    search_item = create_int(3);
+    TEST_CHECK(AVLTree_search(avl, search_item, compare_ints));
+    free(search_item);
+    search_item = create_int(7);
+    TEST_CHECK(AVLTree_search(avl, search_item, compare_ints));
+    free(search_item);
+    search_item = create_int(2);
+    TEST_CHECK(!AVLTree_search(avl, search_item, compare_ints));
+    free(search_item);
 
     // Clean up
     AVLTree_destroy(avl, free);
@@ -41,19 +45,28 @@ void test_avl_tree_delete() {
     AVLTree avl = NULL;
 
     // Insert and delete elements from the AVL tree
-    avl = AVLTree_insert(avl, create_int(5), compare_ints);
-    TEST_CHECK(AVLTree_search(avl, create_int(5), compare_ints));
-    avl = AVLTree_insert(avl, create_int(3), compare_ints);
-    TEST_CHECK(AVLTree_search(avl, create_int(3), compare_ints));
-    avl = AVLTree_insert(avl, create_int(7), compare_ints);
-    TEST_CHECK(AVLTree_search(avl, create_int(7), compare_ints));
+    int *insert_item = create_int(5);
+    avl = AVLTree_insert(avl, insert_item, compare_ints);
+    TEST_CHECK(AVLTree_search(avl, insert_item, compare_ints));
+    insert_item = create_int(3);
+    avl = AVLTree_insert(avl, insert_item, compare_ints);
+    TEST_CHECK(AVLTree_search(avl, insert_item, compare_ints));
+    insert_item = create_int(7);
+    avl = AVLTree_insert(avl, insert_item, compare_ints);
+    TEST_CHECK(AVLTree_search(avl, insert_item, compare_ints));
 
-    avl = AVLTree_delete(avl, create_int(5), compare_ints, free);
-    TEST_CHECK(!AVLTree_search(avl, create_int(5), compare_ints));
-    avl = AVLTree_delete(avl, create_int(3), compare_ints, free);
-    TEST_CHECK(!AVLTree_search(avl, create_int(3), compare_ints));
-    avl =AVLTree_delete(avl, create_int(7), compare_ints, free);
-    TEST_CHECK(!AVLTree_search(avl, create_int(7), compare_ints));
+    int *delete_item = create_int(5);
+    avl = AVLTree_delete(avl, delete_item, compare_ints, free);
+    TEST_CHECK(!AVLTree_search(avl, delete_item, compare_ints));
+    free(delete_item);
+    delete_item = create_int(3);
+    avl = AVLTree_delete(avl, delete_item, compare_ints, free);
+    TEST_CHECK(!AVLTree_search(avl, delete_item, compare_ints));
+    free(delete_item);
+    delete_item = create_int(7);
+    avl = AVLTree_delete(avl, delete_item, compare_ints, free);
+    TEST_CHECK(!AVLTree_search(avl, delete_item, compare_ints));
+    free(delete_item);
     
     TEST_CHECK(AVLTree_empty(avl));
 

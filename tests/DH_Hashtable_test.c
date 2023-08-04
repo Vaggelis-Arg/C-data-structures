@@ -96,6 +96,9 @@ void test_hash_table_operations() {
     TEST_CHECK(DHhashtable_size(table) == 0);
 
     // Clean up
+    free(data1);
+    free(data2);
+    free(data3);
     DHhashtable_destroy(table);
 }
 
@@ -119,6 +122,8 @@ void test_hash_table_collision() {
     TEST_CHECK(found_data == data2);
 
     // Clean up
+    free(data1);
+    free(data2);
     DHhashtable_destroy(table);
 }
 
