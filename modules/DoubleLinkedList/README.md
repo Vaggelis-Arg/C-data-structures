@@ -1,6 +1,6 @@
 # Double Linked List
 
-A double linked list is a data structure that consists of a sequence of elements, where each element points to the next and the previous element in the sequence. This data structure allows efficient insertion and deletion of elements at both the beginning and the end of the list.
+A [double linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) is a data structure that consists of a sequence of elements, where each element points to the next and the previous element in the sequence. This data structure allows efficient insertion and deletion of elements at both the beginning and the end of the list.
 
 
 ## Features
