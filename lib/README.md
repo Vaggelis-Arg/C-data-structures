@@ -1,8 +1,5 @@
 # Compilation:
 
-To compile the data structures library, navigate to the root directory containing this Makefile and run the following command:
-
-
 To compile the data structures library, follow these steps:
 
 1. Clone this repository to your local machine or download the source code as a ZIP file.
@@ -26,9 +23,9 @@ To use the library in your C projects, follow these steps:
 
 2. Include the required header files in your C source files to access the data structures you want to use. For example, to use the Stack module, include the following line at the top of your C source file:
 
-```c
-#include "<path_to_your_project_folder>/Stack/Stack.h" (Replace <path_to_your_project_folder> with the actual path to your project folder.)
-
+```bash
+~#include "<path_to_your_project_folder>/Stack/Stack.h" (Replace <path_to_your_project_folder> with the actual path to your project folder.)
+```
 
 ##
 
