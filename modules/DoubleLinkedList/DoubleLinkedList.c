@@ -276,7 +276,7 @@ void DLL_print(Listptr head, PrintFunc print) {
 
 //free the double linked list
 void DLL_freelist(Listptr head, Listptr tail, DestroyFunc destroy) {
-    while((head != tail) && (head->prev != tail)) {
+    while((head != tail) && (head != NULL) && (head->prev != tail)) {
         Listptr temp = head;
         head = head->next;
         if(destroy)
@@ -288,4 +288,7 @@ void DLL_freelist(Listptr head, Listptr tail, DestroyFunc destroy) {
             destroy(temp->data);
         free(temp);
     }
+    if(destroy)
+        destroy(head->data);
+    free(head);
 }
