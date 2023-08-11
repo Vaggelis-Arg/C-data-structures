@@ -1,6 +1,6 @@
 # C-data-structures
 
-Welcome to C-data-structures! This is a collection of various data structures implemented in C using void pointers and macros. Each data structure in this project is designed to provide efficient and flexible solutions to common programming challenges. The use of void pointers and macros allows for a generic implementation that can handle different types of data. The present project is from the course "Data Structures and Programming Techniques" which I attended in the first year of my undergraduate studies with a grade 10/10
+Welcome to C-data-structures! This is a collection of various data structures implemented in C using void pointers and macros. Each data structure in this project is designed to provide efficient and flexible solutions to common programming challenges. The use of void pointers and macros allows for a generic implementation that can handle different types of data. The present project is from the course "Data Structures and Programming Techniques" which I attended in the first year of my undergraduate studies with a grade 10/10.
 
 ## Table of Contents
 - [Introduction](#introduction)
